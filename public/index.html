@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevToolkit Hub</title>
+  <link rel="stylesheet" href="style.css">
+<style>.paf-made-by{position:fixed;right:8px;bottom:8px;width:min(72px,12vw);max-width:12vw;height:auto;object-fit:contain;opacity:.5;background:transparent;padding:0;border:0;box-shadow:none;filter:none;pointer-events:none;z-index:30}</style></head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>⚡ DevToolkit Hub</h1>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn-icon" title="Toggle Theme">🌙</button>
+      </div>
+    </header>
+    
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-target="json-tool">JSON Formatter</button>
+      <button class="tab-btn" data-target="api-tool">API Tester</button>
+      <button class="tab-btn" data-target="encoder-tool">Encoders / Decoders</button>
+      <button class="tab-btn" data-target="hash-tool">Hash & UUID</button>
+      <button class="tab-btn" data-target="history-tool">History</button>
+    </nav>
+
+    <main class="main-content">
+      <!-- JSON TOOL -->
+      <section id="json-tool" class="tool-section active">
+        <h2>JSON Formatter & Validator</h2>
+        <div class="tool-grid">
+          <div class="pane">
+            <label for="jsonInput">Input JSON:</label>
+            <textarea id="jsonInput" placeholder="Paste raw JSON here..."></textarea>
+            <div class="btn-group">
+              <button id="jsonFormatBtn" class="btn primary">Format</button>
+              <button id="jsonMinifyBtn" class="btn">Minify</button>
+              <button id="jsonSaveBtn" class="btn secondary">Save to History</button>
+            </div>
+          </div>
+          <div class="pane">
+            <label for="jsonOutput">Output / Status:</label>
+            <div id="jsonStatus" class="status-banner">Ready</div>
+            <textarea id="jsonOutput" readonly placeholder="Formatted output will appear here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- API TESTER -->
+      <section id="api-tool" class="tool-section">
+        <h2>Lightweight API Tester</h2>
+        <div class="api-bar">
+          <select id="apiMethod">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+            <option value="PATCH">PATCH</option>
+          </select>
+          <input type="text" id="apiUrl" placeholder="https://api.example.com/data" />
+          <button id="apiSendBtn" class="btn primary">Send Request</button>
+        </div>
+        <div class="tool-grid">
+          <div class="pane">
+            <label for="apiHeaders">Headers (JSON):</label>
+            <textarea id="apiHeaders" placeholder="{\n  \"Content-Type\": \"application/json\"\n}"></textarea>
+            <label for="apiRequestBody">Request Body (JSON):</label>
+            <textarea id="apiRequestBody" placeholder="{\n  \"key\": \"value\"\n}"></textarea>
+          </div>
+          <div class="pane">
+            <div class="response-meta">
+              <span id="apiStatusBadge" class="badge">Status: -</span>
+              <span id="apiTimeBadge" class="badge">Time: -</span>
+            </div>
+            <label for="apiResponseBody">Response:</label>
+            <textarea id="apiResponseBody" readonly placeholder="Response will appear here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENCODER TOOL -->
+      <section id="encoder-tool" class="tool-section">
+        <h2>Encoders & Decoders</h2>
+        <div class="tool-grid">
+          <div class="pane">
+            <label for="encoderInput">Input Text / Payload:</label>
+            <textarea id="encoderInput" placeholder="Enter text, Base64, or JWT..."></textarea>
+            <div class="btn-group">
+              <button class="btn primary" data-action="base64-encode">Base64 Encode</button>
+              <button class="btn" data-action="base64-decode">Base64 Decode</button>
+              <button class="btn" data-action="url-encode">URL Encode</button>
+              <button class="btn" data-action="url-decode">URL Decode</button>
+              <button class="btn secondary" data-action="jwt-decode">JWT Inspect</button>
+            </div>
+          </div>
+          <div class="pane">
+            <label for="encoderOutput">Result:</label>
+            <textarea id="encoderOutput" readonly placeholder="Result will appear here..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- HASH & UUID TOOL -->
+      <section id="hash-tool" class="tool-section">
+        <h2>Hash & UUID Generators</h2>
+        <div class="pane">
+          <label for="hashInput">Input String:</label>
+          <input type="text" id="hashInput" placeholder="Type text to hash..." />
+          <div class="btn-group" style="margin-top: 15px;">
+            <button id="genUuidBtn" class="btn primary">Generate UUID v4</button>
+            <button id="genMd5Btn" class="btn">Generate MD5 (Simulated)</button>
+            <button id="genShaBtn" class="btn">Generate SHA-256</button>
+          </div>
+          <div style="margin-top: 20px;">
+            <label for="hashOutput">Generated Result:</label>
+            <input type="text" id="hashOutput" readonly placeholder="Result..." />
+          </div>
+        </div>
+      </section>
+
+      <!-- HISTORY TOOL -->
+      <section id="history-tool" class="tool-section">
+        <h2>Saved History</h2>
+        <div class="pane" style="max-width: 100%;">
+          <button id="refreshHistoryBtn" class="btn" style="margin-bottom: 10px;">Refresh History</button>
+          <div id="historyList" class="history-list">Loading history...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Made with App Builder Badge -->
+  
+
+  <script src="app.js"></script>
+<img class="paf-made-by" src="/made-by.png" alt="Made with App Builder — Pi SoloHost"></body>
+</html>
